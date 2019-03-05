@@ -1,0 +1,121 @@
+swagger: "2.0"
+
+info:
+  version: "0.1"
+  title: "Artifact"
+
+basePath: /v1
+
+paths:
+  /random/{size}:
+      get:
+        tags:
+          - math
+        description: "Provide a list of integers"
+        summary: "Provide a list of integers"
+        operationId: myapp.math.random
+        consumes:
+          - application/json
+        produces:
+          - application/json
+        parameters:
+          - in: path
+            name: size
+            description: The size of the list
+            required: true
+            type: integer
+        responses:
+          "200":
+            description: Created
+            schema:
+              $ref: "#/definitions/RandomSuccessResponse"
+          "400":
+            description: Invalid request
+            schema:
+              $ref: "#/definitions/RandomErrorResponse"
+          "503":
+            description: Service unavailable
+            schema:
+              $ref: "#/definitions/RandomErrorResponse"
+  /killer_feature/{value}:
+      get:
+        tags:
+          - math
+        description: "Provide a list of integers"
+        summary: "Provide a list of integers"
+        operationId: myapp.func.killer_feature
+        consumes:
+          - application/json
+        produces:
+          - application/json
+        parameters:
+          - in: path
+            name: value
+            description: The value to process
+            required: true
+            type: integer
+        responses:
+          "200":
+            description: Created
+            schema:
+              $ref: "#/definitions/RandomSuccessResponse"
+          "400":
+            description: Invalid request
+            schema:
+              $ref: "#/definitions/RandomErrorResponse"
+          "503":
+            description: Service unavailable
+            schema:
+              $ref: "#/definitions/RandomErrorResponse"
+  /ping:
+      get:
+        tags:
+          - health check
+        description: "Provide information on the application health"
+        summary: "Application health"
+        operationId: myapp.health.status
+        consumes:
+          - application/json
+        produces:
+          - application/json
+        responses:
+          "200":
+            description: Good
+            schema:
+              $ref: "#/definitions/HealthResponse"
+          "500":
+            description: Internal Server Error
+            schema:
+              $ref: "#/definitions/HealthResponse"
+          "503":
+            description: Service unavailable
+            schema:
+              $ref: "#/definitions/HealthResponse"
+
+definitions:
+  HealthResponse:
+    description: "The object status"
+    readOnly: false
+    type: object
+    properties:
+      status:
+        type: "string"
+        format: "string"
+  RandomSuccessResponse:
+    description: "The response on the random path on successful response"
+    readOnly: false
+    type: object
+    properties:
+      result:
+        type: "array"
+        items:
+          type: "integer"
+          format: "integer"
+  RandomErrorResponse:
+    description: "The response on the random path on failure"
+    readOnly: false
+    type: object
+    properties:
+      caused_by:
+        type: "string"
+        format: "string"
