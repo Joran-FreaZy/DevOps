@@ -46,7 +46,7 @@ def _parse_requirements(filepath):
         from pip.req import parse_requirements
         raw = parse_requirements(filepath)
 
-return [str(i.req) for i in raw]
+    return [str(i.req) for i in raw]
 
 
 
