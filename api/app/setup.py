@@ -44,7 +44,7 @@ def _parse_requirements(filepath):
         raw = parse_requirements(filepath, session=PipSession())
     else:
         from pip.req import parse_requirements
-        raw = parse_requirements(filepath
+        raw = parse_requirements(filepath)
     
     return [str(i.req) for i in raw]
 
