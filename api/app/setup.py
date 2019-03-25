@@ -28,8 +28,8 @@ def _parse_requirements(filepath):
 #requirements = [str(i.req) for i in parse_requirements("requirements.txt", session=False)]
 #test_requirements = [str(i.req) for i in parse_requirements("test_requirements.txt", session=False)]
 
-requirements=_parse_requirements("requirements.txt")
-test_requirements=_parse_requirements("test_requirements.txt")
+requirements = _parse_requirements("requirements.txt")
+test_requirements = _parse_requirements("test_requirements.txt")
 VERSION = '0.1.0'
 
 setup(
